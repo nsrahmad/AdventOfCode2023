@@ -10,8 +10,9 @@ Metacello new
 ```
 Each Day is represented as a class, with three class side methods `input`, 
 `part1`, and `part2`. `input` obviously has the contents of input given with the
-puzzle. you can get the Solution for each particular day by typing `Day1 part1`
-into playground and doint `Print it` or `Inspect it` on it.
+puzzle. `part1` and `part2` return the result of the puzzle. e.g you can get the
+Solution for day1 part1 by typing `Day1 part1` into playground and doing
+`Print it` or `Inspect it` on it.
 
 I am also writing blogposts for each day:
 - [Day1](https://nsrahmad.github.io/posts/advent-of-code-2023-using-pharo-smalltalk-day-1/)
