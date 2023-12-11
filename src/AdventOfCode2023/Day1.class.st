@@ -2,12 +2,13 @@
 Day 1 of Advent of code 2023
 "
 Class {
-	#name : #Day1,
-	#superclass : #Object,
-	#category : #AdventOfCode2023
+	#name : 'Day1',
+	#superclass : 'Object',
+	#category : 'AdventOfCode2023',
+	#package : 'AdventOfCode2023'
 }
 
-{ #category : #functions }
+{ #category : 'functions' }
 Day1 class >> input [
 	^ 'hcpjssql4kjhbcqzkvr2fivebpllzqbkhg
 4threethreegctxg3dmbm1
@@ -1012,10 +1013,10 @@ ffnrprtnine1tjznmckv5sixczv
 '
 ]
 
-{ #category : #functions }
+{ #category : 'functions' }
 Day1 class >> part1 [
 	<script>
-	| data line parsedData asNumbers|
+	| data line parsedData asNumbers solution |
 
 data := self input.
 
@@ -1025,13 +1026,15 @@ parsedData := (data lines) collect: [ :each | line matchesIn: each ].
 
 asNumbers := parsedData collect: [ :each | ((each first asString), (each last asString)) asNumber ].
 
-^ asNumbers inject: 0 into: [ :sum :each | sum + each ].
+solution := asNumbers inject: 0 into: [ :sum :each | sum + each ].
+
+SpAlertDialog new title: 'Solution'; label: solution asString; acceptLabel: 'Okay'; openModal
 ]
 
-{ #category : #functions }
+{ #category : 'functions' }
 Day1 class >> part2 [
 	<script>
-| data wordDigit line parsedData asNumbers|
+| data wordDigit line parsedData asNumbers solution|
 
 data := self input.
 
@@ -1051,5 +1054,7 @@ parsedData := (data lines) collect: [ :each | line matchesIn: each ] .
 
 asNumbers := parsedData collect: [ :each | ((each first asString), (each last asString)) asNumber ].
 
-^ asNumbers inject: 0 into: [ :sum :each | sum + each ].
+solution := asNumbers inject: 0 into: [ :sum :each | sum + each ].
+
+SpAlertDialog new title: 'Solution'; label: solution asString; acceptLabel: 'Okay'; openModal
 ]

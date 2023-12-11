@@ -2,18 +2,19 @@
 A 2D grid
 "
 Class {
-	#name : #Grid2D,
-	#superclass : #CTGrid,
-	#category : #AdventOfCode2023
+	#name : 'Grid2D',
+	#superclass : 'CTGrid',
+	#category : 'AdventOfCode2023',
+	#package : 'AdventOfCode2023'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Grid2D >> at: aPoint [
 	aPoint isPoint ifTrue: [^ self atRow: aPoint x atColumn: aPoint y ].
 	^ self contents at: aPoint 
 ]
 
-{ #category : #visualization }
+{ #category : 'visualization' }
 Grid2D >> visualize [
  	| c |
 	c := RSCanvas new.
@@ -32,7 +33,7 @@ Grid2D >> visualize [
 	^ c canvas
 ]
 
-{ #category : #visualization }
+{ #category : 'visualization' }
 Grid2D >> visualizeWithHighlight: aBlock [
 	| c |
 	c := RSCanvas new.

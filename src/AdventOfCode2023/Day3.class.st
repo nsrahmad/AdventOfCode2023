@@ -2,12 +2,13 @@
 Day 3 of AOC
 "
 Class {
-	#name : #Day3,
-	#superclass : #Object,
-	#category : #AdventOfCode2023
+	#name : 'Day3',
+	#superclass : 'Object',
+	#category : 'AdventOfCode2023',
+	#package : 'AdventOfCode2023'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Day3 class >> input [ 
 ^  '.........232.633.......................803..........................361................192............539.................973.221...340.....
 .............*..............#.....256.#.........329....................*313............*.......766.......*..........472..-...........+..249.
@@ -152,13 +153,13 @@ Day3 class >> input [
 '
 ]
 
-{ #category : #functions }
+{ #category : 'functions' }
 Day3 class >> part1 [ 
 	<script>
 	
-	| input aNumber numberRanges padLines paddedLines generateSurroundings numbers |
+	| input aNumber numberRanges padLines paddedLines generateSurroundings numbers solution|
 
-input := self input.
+input := (self input) lines.
 
 aNumber := #digit asParser plus.
 
@@ -172,7 +173,7 @@ padLines := [ :col |
 		yourself.
 	].
 
-paddedLines := (padLines value: (input lines) asOrderedCollection).
+paddedLines := padLines value: (input asOrderedCollection).
 
 numberRanges := paddedLines collect: [:each | aNumber matchingSkipRangesIn: each ].
 
@@ -195,21 +196,23 @@ generateSurroundings := [ :numInterval :line |
 numbers := OrderedCollection new.
 
 numberRanges doWithIndex: [ :each :index |
-	 ((each size) >= 0)
+	each isNotEmpty
 	ifTrue: [numbers add: (each collect: [ :n |
 		(generateSurroundings value: n value: index)])]].
 
-^ ((numbers collect: [ :each |
+solution := ((numbers collect: [ :each |
 	each reject: [ :e | (e at: 2) matchesRegex: '\.*']
 		thenCollect: [ :e | e at: 1 ]]) flattened)
-	inject: 0 into: [ :sum :e | sum + e ]
+	inject: 0 into: [ :sum :e | sum + e ].
+	
+SpAlertDialog new title: 'Solution'; label: solution asString; acceptLabel: 'Okay'; openModal
 
 ]
 
-{ #category : #functions }
+{ #category : 'functions' }
 Day3 class >> part2 [ 
 	<script>
-	| input padLines paddedLines grid stars readNumberAt starsWithNumbers neighbors |
+	| input padLines paddedLines grid stars readNumberAt starsWithNumbers neighbors solution |
 
 input := (self input) lines.
 
@@ -278,6 +281,7 @@ starsWithNumbers := (starsWithNumbers collect: [ :each |
 		thenCollect: [:e | e asNumber]])
 		select: [ :e | (e size) > 1 ].
 
-^ starsWithNumbers inject: 0 into: [ :sum :e | ((e at: 1) * (e at: 2)) + sum ]
+solution := starsWithNumbers inject: 0 into: [ :sum :e | ((e at: 1) * (e at: 2)) + sum ].
+SpAlertDialog new title: 'Solution'  ; label: solution asString; acceptLabel: 'Okay'; openModal.
 "grid visualizeWithHighlight: [ :e | e = $* ]"
 ]

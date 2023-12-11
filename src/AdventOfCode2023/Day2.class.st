@@ -2,12 +2,13 @@
 Day 2 of the Advent of Code
 "
 Class {
-	#name : #Day2,
-	#superclass : #Object,
-	#category : #AdventOfCode2023
+	#name : 'Day2',
+	#superclass : 'Object',
+	#category : 'AdventOfCode2023',
+	#package : 'AdventOfCode2023'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Day2 class >> input [
 	^ 'Game 1: 1 red, 10 blue, 5 green; 11 blue, 6 green; 6 green; 1 green, 1 red, 12 blue; 3 blue; 3 blue, 4 green, 1 red
 Game 2: 3 red, 5 green; 5 green, 7 red; 1 blue, 7 red, 3 green; 3 red, 2 blue; 5 green, 4 red
@@ -112,10 +113,10 @@ Game 100: 9 green, 2 blue, 12 red; 2 blue, 14 red, 2 green; 14 red, 12 green
 '
 ]
 
-{ #category : #functions }
+{ #category : 'functions' }
 Day2 class >> part1 [ 
 <script>
-| input aColor anInteger aCube aSet aGame gamesCollection maxRGBinSingleGame |
+| input aColor anInteger aCube aSet aGame gamesCollection maxRGBinSingleGame solution |
 
 input := self input.
 
@@ -145,17 +146,19 @@ maxRGBinSingleGame := [ :game |
 	{ (game at: 1) . dict }.
 ].
 
-^ ((((gamesCollection collect: [ :each | maxRGBinSingleGame value: each ])
+solution := ((((gamesCollection collect: [ :each | maxRGBinSingleGame value: each ])
 	reject: [ :each | ((each at: 2) at: (Color named: 'red')) > 12 ])
 	reject: [ :each | ((each at: 2) at: (Color named: 'green')) > 13 ])
 	reject: [ :each | ((each at: 2) at: (Color named: 'blue')) > 14 ])
-	inject: 0 into: [:sum :each | sum + (each at: 1) ]
+	inject: 0 into: [:sum :each | sum + (each at: 1) ].
+	
+SpAlertDialog new title: 'Solution'; label: solution asString; acceptLabel: 'Okay'; openModal
 ]
 
-{ #category : #functions }
+{ #category : 'functions' }
 Day2 class >> part2 [ 
 <script>
-| input aColor anInteger aCube aSet aGame gamesCollection maxRGBinSingleGame |
+| input aColor anInteger aCube aSet aGame gamesCollection maxRGBinSingleGame solution |
 
 input := self input.
 
@@ -185,6 +188,8 @@ maxRGBinSingleGame := [ :game |
 	{ (game at: 1) . dict }.
 ].
 
-^ ((gamesCollection collect: [ :each | maxRGBinSingleGame value: each ])
+solution := ((gamesCollection collect: [ :each | maxRGBinSingleGame value: each ])
 	collect: [ :each | ((each at: 2) values) inject: 1 into:[:prod :e| prod * e  ]]) inject: 0 into: [ :sum :e | sum + e ].
+	
+SpAlertDialog new title: 'Solution'; label: solution asString; acceptLabel: 'Okay'; openModal
 ]
