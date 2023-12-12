@@ -234,18 +234,18 @@ paddedLines doWithIndex:  [ :each :row |
 	each doWithIndex: [ :e :col |
 		grid atRow: row atColumn: col put: e] ].
 
-readNumberAt := [ :pos :aString | 
+readNumberAt := [ :pos :aGrid | 
 	| result lPos rPos |
 	lPos := pos - (0 @ 1).
 	rPos := pos + (0 @ 1).
 	result := ''.
-	[(aString at: pos) isDigit & ((aString at: lPos) isDigit)] whileTrue: 
-		[result := (aString at: lPos) asString ,  result.
+	[(aGrid at: pos) isDigit & ((aGrid at: lPos) isDigit)] whileTrue: 
+		[result := (aGrid at: lPos) asString ,  result.
 		lPos := lPos - (0 @ 1)].
-	(aString at: pos) isDigit ifTrue: 
-		[result := result , (aString at: pos) asString].
-	[(aString at: pos) isDigit & (aString at: rPos) isDigit] whileTrue:
-		[result := result , (aString at: rPos) asString.
+	(aGrid at: pos) isDigit ifTrue: 
+		[result := result , (aGrid at: pos) asString].
+	[(aGrid at: pos) isDigit & (aGrid at: rPos) isDigit] whileTrue:
+		[result := result , (aGrid at: rPos) asString.
 		rPos := rPos + (0 @ 1)].
 	result
 ].

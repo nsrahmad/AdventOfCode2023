@@ -43,7 +43,7 @@ Grid2D >> visualizeWithHighlight: aBlock [
 		circle @ (RSPopup new
 		text: [ :e | row@col];
 		yourself).
-		circle color: ((aBlock value: each) ifTrue: Color pink ifFalse: Color pink muchLighter).
+		circle color: (aBlock value: each).
 		labeledCircle := { circle . RSLabel new color: Color black; text: each } asGroup 
 			asShapeFor: each.
 		c add: labeledCircle ].
