@@ -16,3 +16,4 @@ on the icon besides them in the browser, which opens a dialog with answer.
 I am also writing blogposts for each day:
 - [Day1](https://nsrahmad.github.io/posts/advent-of-code-2023-using-pharo-smalltalk-day-1/)
 - [Day2](https://nsrahmad.github.io/posts/advent-of-code-2023-using-pharo-smalltalk-day-2/)
+- [Day3](https://nsrahmad.github.io/posts/advent-of-code-2023-using-pharo-smalltalk-day-3/)
