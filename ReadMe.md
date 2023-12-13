@@ -10,7 +10,7 @@ Metacello new
 ```
 Each Day is represented as a class, with three class side methods `input`, 
 `part1`, and `part2`. `input` obviously has the contents of input given with the
-puzzle. `part1` and `part2` have `<script>` pragma in them so you can run then by clicking 
+puzzle. `part1` and `part2` have `<script>` pragma in them so you can run them by clicking 
 on the icon besides them in the browser, which opens a dialog with answer.
 
 I am also writing blogposts for each day:
